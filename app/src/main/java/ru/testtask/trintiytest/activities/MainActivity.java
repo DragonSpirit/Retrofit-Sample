@@ -12,13 +12,10 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 import ru.testtask.trintiytest.BaseApplication;
 import ru.testtask.trintiytest.R;
 import ru.testtask.trintiytest.adapters.UserAdapter;
 import ru.testtask.trintiytest.models.User;
-import ru.testtask.trintiytest.services.ServerApi;
 import ru.testtask.trintiytest.stuff.SimpleDividerItemDecoration;
 
 public class MainActivity extends AppCompatActivity {
@@ -44,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                 userList.addAll(response.body());
-                userList.get(0).setLastSeen("16.03.2017 11:40");
-                userList.get(1).setLastSeen("15.03.2017 11:40");
                 recyclerView.getAdapter().notifyDataSetChanged();
             }
 

@@ -1,9 +1,5 @@
 package ru.testtask.trintiytest.services;
 
-/**
- * Created by nfedorov online 15.03.17.
- */
-
 import java.util.List;
 
 import retrofit2.Call;

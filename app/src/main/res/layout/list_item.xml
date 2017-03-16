@@ -74,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@{user.colorSimilarity}"
-            android:text="@{Integer.toString(user.similarity) + '%'}"
+            android:text="@{user.similarity}"
             android:layout_toRightOf="@id/age" />
 
         <TextView
@@ -87,7 +87,7 @@
             android:layout_above="@id/age"/>
 
         <TextView
-            android:id="@+id/num_txt"
+            android:id="@+id/unreadMessages"
             android:layout_width="23dp"
             android:layout_height="23dp"
             android:layout_marginTop="7dp"
@@ -95,7 +95,8 @@
             android:layout_toLeftOf="@id/age"
             android:background="@drawable/badge"
             android:gravity="center"
-            android:maxLength="3"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:text="@{Integer.toString(user.unreadMessages)}"
             android:layout_alignParentRight="true"
             android:textColor="#FFFFFF"

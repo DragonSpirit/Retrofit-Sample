@@ -33,4 +33,5 @@ dependencies {
     compile 'com.squareup.retrofit:retrofit:1.6.1'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.facebook.fresco:fresco:1.1.0'
+    compile 'joda-time:joda-time:2.9.7'
 }

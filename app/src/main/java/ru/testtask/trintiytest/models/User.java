@@ -1,8 +1,5 @@
 package ru.testtask.trintiytest.models;
 
-/**
- * Created by nfedorov online 15.03.17.
- */
 
 import android.databinding.BindingAdapter;
 import android.support.v4.content.ContextCompat;
@@ -13,14 +10,15 @@ import com.facebook.imagepipeline.request.ImageRequest;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
 import com.google.gson.annotations.SerializedName;
 
+import org.joda.time.DateTime;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 import ru.testtask.trintiytest.BaseApplication;
 import ru.testtask.trintiytest.R;
-import ru.testtask.trintiytest.stuff.Stuff;
+import ru.testtask.trintiytest.stuff.Utils;
 
 public class User {
 
@@ -99,8 +97,9 @@ public class User {
         }
         if (DateUtils.isToday(lastSeenDate.getTime()))
             prefix = BaseApplication.getInstance().getResources().getString(R.string.today);
-        if (lastSeenDate.before(Calendar.getInstance().getTime()) && !DateUtils.isToday(lastSeenDate.getTime()))
+        if (Utils.dayIsYesterday(new DateTime(lastSeenDate)))
             prefix = BaseApplication.getInstance().getResources().getString(R.string.yesterday);
+
         return (String)android.text.format.DateFormat.format(prefix + ", HH:mm", lastSeenDate);
     }
 
@@ -117,7 +116,7 @@ public class User {
     }
 
     public String getAge() {
-        return Integer.toString(age) + " " + Stuff.age2string(age);
+        return Integer.toString(age) + " " + Utils.age2string(age);
     }
 
     public void setAge(int age) {
@@ -132,8 +131,8 @@ public class User {
         this.avatar = avatar;
     }
 
-    public int getSimilarity() {
-        return similarity;
+    public String getSimilarity() {
+        return Integer.toString(similarity) + "%";
     }
 
     public void setSimilarity(int similarity) {

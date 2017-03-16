@@ -1,9 +1,5 @@
 package ru.testtask.trintiytest.adapters;
 
-/**
- * Created by nfedorov online 15.03.17.
- */
-
 import android.databinding.DataBindingUtil;
 import android.support.annotation.UiThread;
 import android.support.v7.widget.RecyclerView;

@@ -8,10 +8,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import ru.testtask.trintiytest.services.ServerApi;
 
-/**
- * Created by nfedorov online 16.03.17.
- */
-
 public class BaseApplication extends Application {
 
     private static BaseApplication instance;
