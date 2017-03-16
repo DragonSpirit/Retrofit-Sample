@@ -3,10 +3,6 @@ package ru.testtask.trintiytest.stuff;
 import ru.testtask.trintiytest.BaseApplication;
 import org.joda.time.DateTime;
 import ru.testtask.trintiytest.R;
-/**
- * Created by nfedorov online 16.03.17.
- */
-
 
 public class Utils {
 

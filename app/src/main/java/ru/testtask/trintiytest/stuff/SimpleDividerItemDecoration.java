@@ -9,10 +9,6 @@ import android.view.View;
 
 import ru.testtask.trintiytest.R;
 
-/**
- * Created by nfedorov online 15.03.17.
- */
-
 public class SimpleDividerItemDecoration extends RecyclerView.ItemDecoration {
     private Drawable mDivider;
 
