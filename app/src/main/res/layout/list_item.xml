@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto">
     <data>
+        <import type="android.view.View"/>
         <variable
             name="user"
             type="ru.testtask.trintiytest.models.User"/>
@@ -8,10 +10,35 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/avatar"
+        android:imageUrl="@{user.avatar}"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        fresco:placeholderImage="@drawable/placeholder"
+        fresco:roundAsCircle="true"
+        />
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/status"
+            android:layout_width="20dp"
+            android:layout_alignRight="@id/avatar"
+            android:layout_alignBottom="@id/avatar"
+            android:layout_height="20dp"
+            fresco:placeholderImage="@drawable/placeholder"
+            android:imageRes="@{user.colorStatus}"
+            fresco:roundAsCircle="true"
+            />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/avatar"
         android:focusable="true"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
-        android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:clickable="true"
         android:background="?android:attr/selectableItemBackground"
@@ -19,21 +46,36 @@
 
         <TextView
             android:id="@+id/name"
-            android:textColor="@color/name"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:layout_alignParentTop="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@{user.name}"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_toLeftOf="@+id/lastSeen"
             />
 
         <TextView
             android:id="@+id/age"
             android:layout_below="@id/name"
-            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{Integer.toString(user.age)}"/>
+            android:text="@{user.age + ','}"/>
+
+        <TextView
+            android:id="@+id/similarity"
+            android:layout_below="@id/name"
+            android:layout_toEndOf="@id/age"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@{user.colorSimilarity}"
+            android:text="@{Integer.toString(user.similarity) + '%'}"
+            android:layout_toRightOf="@id/age" />
 
         <TextView
             android:id="@+id/lastSeen"
@@ -41,7 +83,25 @@
             android:layout_width="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_height="wrap_content"
-            android:text="@{user.lastSeen}" />
+            android:text="@{user.lastSeen}"
+            android:layout_above="@id/age"/>
 
+        <TextView
+            android:id="@+id/num_txt"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginTop="7dp"
+            android:layout_below="@id/lastSeen"
+            android:layout_toLeftOf="@id/age"
+            android:background="@drawable/badge"
+            android:gravity="center"
+            android:maxLength="3"
+            android:text="@{Integer.toString(user.unreadMessages)}"
+            android:layout_alignParentRight="true"
+            android:textColor="#FFFFFF"
+            android:textSize="10dp"
+            android:visibility="@{(user.unreadMessages > 0) ? View.VISIBLE : View.GONE}"/>
+
+    </RelativeLayout>
     </RelativeLayout>
 </layout>

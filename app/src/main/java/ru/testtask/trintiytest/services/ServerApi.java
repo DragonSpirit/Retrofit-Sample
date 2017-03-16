@@ -1,7 +1,7 @@
 package ru.testtask.trintiytest.services;
 
 /**
- * Created by nfedorov on 15.03.17.
+ * Created by nfedorov online 15.03.17.
  */
 
 import java.util.List;

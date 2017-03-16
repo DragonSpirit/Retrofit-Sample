@@ -1,7 +1,7 @@
 package ru.testtask.trintiytest.adapters;
 
 /**
- * Created by nfedorov on 15.03.17.
+ * Created by nfedorov online 15.03.17.
  */
 
 import android.databinding.DataBindingUtil;
@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import ru.testtask.trintiytest.R;
@@ -52,27 +51,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
         super.onViewRecycled(holder);
     }
 
-    private void dataSetChanged() {
-        this.notifyDataSetChanged();
-    }
-
-    @UiThread
-    public void addItem(final User user) {
-        this.users.add(user);
-        this.dataSetChanged();
-    }
-
-    @UiThread
-    public void addItems(final User[] users) {
-        this.users.addAll(Arrays.asList(users));
-        this.dataSetChanged();
-    }
-
-    @UiThread
-    public void clearItems() {
-        this.users.clear();
-        this.dataSetChanged();
-    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final ListItemBinding binding;
