@@ -1,2 +1,1 @@
-A TrinityDigital test task
-Contains android data binding + retrofit2 + recycleview
+Retrofit sample powered by android data binding and recycleview
