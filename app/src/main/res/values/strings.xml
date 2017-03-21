@@ -1,10 +1,5 @@
 <resources>
     <string name="app_name">TrintiyTest</string>
-    <string-array name="ages">
-        <item>год</item>
-        <item>года</item>
-        <item>лет</item>
-    </string-array>
     <string name="today">Сегодня</string>
     <string name="yesterday">Вчера</string>
 </resources>

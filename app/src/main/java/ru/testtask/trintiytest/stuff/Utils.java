@@ -13,18 +13,7 @@ public class Utils {
      */
 
     public static String age2string(int age) {
-        String[] ages = BaseApplication.getInstance().getResources().getStringArray(R.array.ages);
-        age = age % 100;
-        if (age > 19)
-            age = age % 10;
-        switch (age) {
-            case 1:
-                return (ages[0]);
-            case 2: case 3: case 4:
-                return (ages[1]);
-            default:
-                return (ages[2]);
-        }
+        return BaseApplication.getInstance().getApplicationContext().getResources().getQuantityString(R.plurals.years, age);
     }
 
     public static boolean dayIsYesterday(DateTime day) {

@@ -4,6 +4,7 @@ package ru.testtask.trintiytest.models;
 import android.databinding.BindingAdapter;
 import android.support.v4.content.ContextCompat;
 import android.text.format.DateUtils;
+import android.util.Log;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.request.ImageRequest;
@@ -51,6 +52,10 @@ public class User {
     private int colorSimilarity;
     private int colorStatus;
 
+    private static final SimpleDateFormat lastSeenFormat = new SimpleDateFormat("dd.MM.yyyy hh:mm");
+
+    private static final String TAG = "USER";
+
     public User(int age, int id, String lastSeen, String name, String status, int unreadMessages, String avatar, int similarity) {
         setAge(age);
         setId(id);
@@ -88,19 +93,18 @@ public class User {
     }
 
     public String getLastSeen() {
-        SimpleDateFormat lastSeenFormat = new SimpleDateFormat("dd.MM.yyyy hh:mm");
         String prefix = "dd MMMM";
         try {
             this.lastSeenDate = lastSeenFormat.parse(this.lastSeen);
+            if (DateUtils.isToday(lastSeenDate.getTime()))
+                prefix = BaseApplication.getInstance().getResources().getString(R.string.today);
+            if (Utils.dayIsYesterday(new DateTime(lastSeenDate)))
+                prefix = BaseApplication.getInstance().getResources().getString(R.string.yesterday);
+            return (String)android.text.format.DateFormat.format(prefix + ", HH:mm", lastSeenDate);
         } catch (ParseException e) {
-            e.printStackTrace();
+            Log.w(TAG, e);
+            return "Invalidate value lastSeenDate: " + this.lastSeen;
         }
-        if (DateUtils.isToday(lastSeenDate.getTime()))
-            prefix = BaseApplication.getInstance().getResources().getString(R.string.today);
-        if (Utils.dayIsYesterday(new DateTime(lastSeenDate)))
-            prefix = BaseApplication.getInstance().getResources().getString(R.string.yesterday);
-
-        return (String)android.text.format.DateFormat.format(prefix + ", HH:mm", lastSeenDate);
     }
 
     public void setLastSeen(String lastSeen) {
